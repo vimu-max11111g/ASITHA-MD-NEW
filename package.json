@@ -9,7 +9,7 @@
     "restart": "pm2 restart ASITHA-MD"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "git+https://github.com/rdpmjsing/Baileys-btn.git",
+    "@whiskeysockets/baileys": "npm:@rulzz2nd/baileys-emde",
     "@adiwajshing/keyed-db": "latest",
     "pino": "latest",
     "pm2": "latest",
