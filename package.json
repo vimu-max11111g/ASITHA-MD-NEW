@@ -9,7 +9,7 @@
     "restart": "pm2 restart ASITHA-MD"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/Btn-Baileys-new.git",
+    "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/W-T-B-I-NEW-BALIYES.git",
     "@adiwajshing/keyed-db": "latest",
     "pino": "latest",
     "pm2": "latest",
