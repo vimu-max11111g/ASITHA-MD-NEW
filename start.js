@@ -40,8 +40,8 @@ downloadAllFiles()
 
 console.log("✅ Starting index.js with PM2...");
 
-// PM2 එක index.js start කරනවා
-exec('pm2 start index.js --no-daemon --name ASITHA', (error, stdout, stderr) => {
+// PM2 start කරන්න
+exec('pm2 start index.js --name ASITHA', (error, stdout, stderr) => {
     if (error) {
         console.error(`❌ Error: ${error.message}`);
         return;
@@ -51,12 +51,18 @@ exec('pm2 start index.js --no-daemon --name ASITHA', (error, stdout, stderr) => 
         return;
     }
     console.log(`✅ stdout: ${stdout}`);
-});
 
-// Log continuously print කරන්න
-setInterval(() => {
-    console.log("💡 Waiting for logs... " + new Date().toLocaleString());
-}, 5000);
+    // PM2 logs continuously print කරන්න
+    const pm2Logs = exec('pm2 logs ASITHA');
+
+    pm2Logs.stdout.on('data', (data) => {
+        console.log(`📜 PM2 Log: ${data}`);
+    });
+
+    pm2Logs.stderr.on('data', (data) => {
+        console.error(`❌ PM2 Error: ${data}`);
+    });
+});
     })
     .catch(error => {
         console.error('Error downloading files:', error);
