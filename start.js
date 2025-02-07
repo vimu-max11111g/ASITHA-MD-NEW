@@ -38,16 +38,16 @@ const downloadAllFiles = async () => {
 downloadAllFiles()
     .then(() => {
         exec('node index.js', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing index.js: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.error(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-        });
+    if (error) {
+        console.error(`Error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+});
     })
     .catch(error => {
         console.error('Error downloading files:', error);
