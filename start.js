@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -39,30 +38,17 @@ const downloadAllFiles = async () => {
 downloadAllFiles()
     .then(() => {
 
-console.log("✅ Starting index.js with PM2...");
+console.log("✅ Starting index.js...");
 
-// PM2 start කරන්න
-exec('pm2 start index.js --name ASITHA', (error, stdout, stderr) => {
-    if (error) {
-        console.error(`❌ Error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.error(`⚠️ stderr: ${stderr}`);
-        return;
-    }
-    console.log(`✅ stdout: ${stdout}`);
+// `index.js` එක normal විදියට start කරන්න
+const indexProcess = exec('node index.js');
 
-    // PM2 logs continuously print කරන්න
-    const pm2Logs = exec('pm2 logs ASITHA');
+indexProcess.stdout.on('data', (data) => {
+    console.log(`📜 index.js Log: ${data}`);
+});
 
-    pm2Logs.stdout.on('data', (data) => {
-        console.log(`📜 PM2 Log: ${data}`);
-    });
-
-    pm2Logs.stderr.on('data', (data) => {
-        console.error(`❌ PM2 Error: ${data}`);
-    });
+indexProcess.stderr.on('data', (data) => {
+    console.error(`❌ index.js Error: ${data}`);
 });
     })
     .catch(error => {
