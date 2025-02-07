@@ -37,16 +37,20 @@ const downloadAllFiles = async () => {
 
 downloadAllFiles()
     .then(() => {
-        exec('node index.js', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing index.js: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.error(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
+        console.log('Files downloaded successfully.');
+
+        const indexProcess = exec('node index.js');
+
+        indexProcess.stdout.on('data', (data) => {
+            console.log(`📜 index.js Log: ${data}`);
+        });
+
+        indexProcess.stderr.on('data', (data) => {
+            console.error(`❌ index.js Error: ${data}`);
+        });
+
+        indexProcess.on('close', (code) => {
+            console.log(`index.js process exited with code ${code}`);
         });
     })
     .catch(error => {
