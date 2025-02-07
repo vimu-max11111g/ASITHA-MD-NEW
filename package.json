@@ -4,9 +4,9 @@
   "description": "A WhatsApp bot created using Node.js",
   "main": "start.js",
 "scripts": {
-  "start": "pm2 start start.js --name ASITHA-START",
-  "stop": "pm2 stop ASITHA-START",
-  "restart": "pm2 restart ASITHA-START"
+  "start": "pm2 start start.js --name ASITHA-MD",
+  "stop": "pm2 stop ASITHA-MD",
+  "restart": "pm2 restart ASITHA-MD"
 },
   "dependencies": {
     "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/W-T-B-I-NEW-BALIYES.git",
