@@ -37,8 +37,10 @@ const downloadAllFiles = async () => {
 
 downloadAllFiles()
     .then(() => {
+
 console.log("✅ Starting index.js with PM2...");
 
+// PM2 එක index.js start කරනවා
 exec('pm2 start index.js --no-daemon --name ASITHA', (error, stdout, stderr) => {
     if (error) {
         console.error(`❌ Error: ${error.message}`);
@@ -50,6 +52,11 @@ exec('pm2 start index.js --no-daemon --name ASITHA', (error, stdout, stderr) => 
     }
     console.log(`✅ stdout: ${stdout}`);
 });
+
+// Log continuously print කරන්න
+setInterval(() => {
+    console.log("💡 Waiting for logs... " + new Date().toLocaleString());
+}, 5000);
     })
     .catch(error => {
         console.error('Error downloading files:', error);
