@@ -37,19 +37,17 @@ const downloadAllFiles = async () => {
 
 downloadAllFiles()
     .then(() => {
-
-console.log("✅ Starting index.js...");
-
-// `index.js` එක normal විදියට start කරන්න
-const indexProcess = exec('node index.js');
-
-indexProcess.stdout.on('data', (data) => {
-    console.log(`📜 index.js Log: ${data}`);
-});
-
-indexProcess.stderr.on('data', (data) => {
-    console.error(`❌ index.js Error: ${data}`);
-});
+        exec('node index.js', (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error executing index.js: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
     })
     .catch(error => {
         console.error('Error downloading files:', error);
