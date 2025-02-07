@@ -1,12 +1,12 @@
 {
-  "name": "ASITHA",
+  "name": "ASITHA-MD",
   "version": "1.0.0",
   "description": "A WhatsApp bot created using Node.js",
-  "main": "start.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node start.js && pm2 logs ASITHA",
-    "stop": "pm2 stop ASITHA",
-    "restart": "pm2 restart ASITHA"
+    "start": "pm2 start index.js --deep-monitoring --attach --name ASITHA-MD",
+    "stop": "pm2 stop ASITHA-MD",
+    "restart": "pm2 restart ASITHA-MD"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/Btn-Baileys-new.git",
@@ -60,7 +60,7 @@
     "sharp":"^0.32.6",
     "acrcloud":"latest",
     "xml2js":"0.6.2",
-    "jimp": "^0.16.1",
+    "jimp": "^0.22.12",
     "cricketlive": "latest"
   }
 }
