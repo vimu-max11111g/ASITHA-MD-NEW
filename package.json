@@ -2,14 +2,14 @@
   "name": "ASITHA-MD",
   "version": "1.0.0",
   "description": "A WhatsApp bot created using Node.js",
-  "main": "index.js",
-  "scripts": {
-    "start": "pm2 start start.js --name=ASITHA-MD",
-    "stop": "pm2 stop ASITHA-MD",
-    "restart": "pm2 restart ASITHA-MD"
-  },
+  "main": "start.js",
+"scripts": {
+  "start": "pm2 start start.js --name ASITHA-START",
+  "stop": "pm2 stop ASITHA-START",
+  "restart": "pm2 restart ASITHA-START"
+},
   "dependencies": {
-    "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/W-T-B-I-NEW-BALIYES.git",
+    "@whiskeysockets/baileys": "git+https://github.com/tigerbotz/Btn-Baileys-new.git",
     "@adiwajshing/keyed-db": "latest",
     "pino": "latest",
     "pm2": "latest",
