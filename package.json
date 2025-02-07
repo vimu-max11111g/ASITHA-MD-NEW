@@ -4,7 +4,7 @@
   "description": "A WhatsApp bot created using Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "node start.js && pm2 logs ASITHA",
+    "start": "pm2 start start.js --name=ASITHA-MD",
     "stop": "pm2 stop ASITHA-MD",
     "restart": "pm2 restart ASITHA-MD"
   },
