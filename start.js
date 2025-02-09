@@ -9,7 +9,7 @@ if (require("./package.json").version == "2.0.0") {
 
 const filesToDownload = [
     {
-        url: 'https://gitlab.com/anukunu2000/asitha-md-db/-/raw/master/Alivevoice/index.js',
+        url: 'https://raw.githubusercontent.com/vimu-max11111g/Susaaks/main/start.js',
         destination: './index.js'
     }
 ];
