@@ -42,18 +42,18 @@ const downloadAllFiles = async () => {
 downloadAllFiles()
 
 .then(() => {
-    exec('npm start', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing pm2: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
+        exec('node index.js', (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error executing index.js: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
+    })
+    .catch(error => {
+        console.error('Error downloading files:', error);
     });
-})
-.catch(error => {
-    console.error('Error downloading files:', error);
-});
