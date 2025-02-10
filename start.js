@@ -44,7 +44,7 @@ const startIndex = () => {
     console.log('🔄 Starting index.js...');
     
     const process = spawn('node', ['index.js'], { stdio: 'inherit' });
-    
+}   
 process.on('uncaughtException', (err) => {
     console.error('❌ Uncaught Exception:', err);
     startIndex(); 
