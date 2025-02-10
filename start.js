@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 
 if (require("./package.json").version == "2.0.0") {
     return console.log("decrypt karanna EPA pko");
@@ -38,21 +38,16 @@ const downloadAllFiles = async () => {
         }
     }
 };
-
+const startIndex = () => {
+    console.log('🔄 Starting index.js...');
+    
+    const process = spawn('node', ['index.js'], { stdio: 'inherit' });
+  
+}
 downloadAllFiles()
 
 .then(() => {
-        exec('node index.js', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error executing index.js: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.error(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-        });
+        startIndex()
     })
     .catch(error => {
         console.error('Error downloading files:', error);
