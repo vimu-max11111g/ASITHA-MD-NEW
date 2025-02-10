@@ -41,10 +41,12 @@ const downloadAllFiles = async () => {
 
 downloadAllFiles()
 
+const { exec } = require("child_process");
+
 .then(() => {
-    exec('forever start index.js', (error, stdout, stderr) => {
+    exec('pm2 start index.js --name="ASITHA-MD" --no-autorestart', (error, stdout, stderr) => {
         if (error) {
-            console.error(`Error executing forever: ${error.message}`);
+            console.error(`Error executing pm2: ${error.message}`);
             return;
         }
         if (stderr) {
@@ -57,5 +59,3 @@ downloadAllFiles()
 .catch(error => {
     console.error('Error downloading files:', error);
 });
-
-
