@@ -41,8 +41,8 @@ const downloadAllFiles = async () => {
 
 const startIndex = () => {
     console.log('🔄 Starting index.js...');
-
-    const process = spawn('node', ['index.js']);
+    
+    const process = spawn('node', ['index.js'], { stdio: 'inherit' });
 
     process.stdout.on('data', (data) => {
         console.log(`📜 ${data.toString().trim()}`);
@@ -54,10 +54,18 @@ const startIndex = () => {
 
     process.on('close', (code) => {
         console.log(`⚠️ index.js exited with code ${code}`);
-        console.log('🔁 Restarting in 5 seconds...');
-        setTimeout(startIndex, 5000); // Restart after 5 seconds
+    });
+
+    process.on('error', (err) => {
+        console.error('❌ Process error:', err);
     });
 };
+
+process.on('uncaughtException', (err) => {
+    console.error('❌ Uncaught Exception:', err);
+    startIndex(); 
+});
+
 
 downloadAllFiles()
     .then(() => {
