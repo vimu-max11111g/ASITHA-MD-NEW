@@ -39,28 +39,12 @@ const downloadAllFiles = async () => {
     }
 };
 
+ 
 const startIndex = () => {
     console.log('🔄 Starting index.js...');
     
     const process = spawn('node', ['index.js'], { stdio: 'inherit' });
-
-    process.stdout.on('data', (data) => {
-        console.log(`📜 ${data.toString().trim()}`);
-    });
-
-    process.stderr.on('data', (data) => {
-        console.error(`❌ ${data.toString().trim()}`);
-    });
-
-    process.on('close', (code) => {
-        console.log(`⚠️ index.js exited with code ${code}`);
-    });
-
-    process.on('error', (err) => {
-        console.error('❌ Process error:', err);
-    });
-};
-
+    
 process.on('uncaughtException', (err) => {
     console.error('❌ Uncaught Exception:', err);
     startIndex(); 
