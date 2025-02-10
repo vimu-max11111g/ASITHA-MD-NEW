@@ -41,10 +41,8 @@ const downloadAllFiles = async () => {
 
 downloadAllFiles()
 
-const { exec } = require("child_process");
-
 .then(() => {
-    exec('pm2 start index.js --name="ASITHA-MD" --no-autorestart', (error, stdout, stderr) => {
+    exec('npm start', (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing pm2: ${error.message}`);
             return;
